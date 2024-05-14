@@ -18,7 +18,7 @@ class IrisSample(NamedTuple):
     petal_width: float
     star: int
 
-# Load the iris dataset
+# Load the iris dataseta
 def load_iris_data() -> List[IrisSample]:
     iris = datasets.load_iris()
     x= iris['data']

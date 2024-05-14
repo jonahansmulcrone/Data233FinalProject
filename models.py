@@ -48,10 +48,15 @@ obj.train(X_train, y_train)
 
 new_sentences = "Love this store!  Who doesn't!  The salad bar is fresh and they have all types of ethnic food to try.  N-JOY"
 qualt = sentenceQuality()
+predictions = obj.predict(X_test)
+
+# Calculate accuracy by comparing predictions with actual labels
+accuracy = np.mean(predictions == y_test)
+print("Accuracy:", accuracy)
 answer = qualt.calculateQuality(qualt.calculateScores(new_sentences))
-prd = np.array([answer, 0]).reshape(1, 2)
+prd = np.array([answer, 3]).reshape(1, 2)
 quality = obj.predict(prd)
-print("Predicted Quality:", quality)
+print("Predicted Quality KNN:", quality)
 
 
 
@@ -94,6 +99,10 @@ print("Mean Squared Error:", mse)
 print("Linear regssion", np.round(linear_reg_model.predict(prd)))
 
 
-
+class mod:
+    def __init__(self):
+        self.reviews_data = reviews_data
+    def getSEn(self):
+        return reviews_data
 
 

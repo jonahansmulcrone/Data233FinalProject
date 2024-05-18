@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import json
 from datetime import datetime
+from Sentence_quality import sentenceQuality
 
 business_url = "https://api.yelp.com/v3/businesses/search?location=Seattle&limit=20"
 headers = {
@@ -129,7 +130,9 @@ with open("yelp_dataset/reviews_join_business.json", "r", encoding="utf-8") as i
 reviews_with_season = []
 for review in reviews_data:
     if "date" in review:
+        qualt = sentenceQuality()
         review["season"] = get_season(review["date"])
+        review["Quality"] = qualt.calculateQuality(qualt.calculateScores(review["text"]))
         reviews_with_season.append(review)
 
 # Save objects with seasons into a new file

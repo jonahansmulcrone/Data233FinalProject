@@ -19,12 +19,12 @@ clf = DecisionTreeClassifier()
 clf.fit(X, y)
 
 # Create user input DataFrame
-user_input = pd.DataFrame({
+user_input2 = pd.DataFrame({
     'city_' + 'Tampa': [1],
     'season_Winter': [1]
 })
 
-user_input2 = pd.DataFrame({
+user_input = pd.DataFrame({
     'city_' + 'Reno': [1],
     'season_Winter': [1]
 })
@@ -48,9 +48,4 @@ plt.bar(range(len(indices)), feature_importance[indices], align="center")
 plt.xticks(range(len(indices)), feature_names[indices], rotation=90)
 plt.xlabel("Features")
 plt.ylabel("Importance")
-plt.show()
-
-# Visualizing the Decision Tree
-plt.figure(figsize=(20, 10))
-plot_tree(clf, filled=True, feature_names=X.columns, class_names=clf.classes_, max_depth=3)
 plt.show()
